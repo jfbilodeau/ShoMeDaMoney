@@ -17,5 +17,19 @@ namespace ShoMeDaMoney.Lib.Tests
             // Assert
             Assert.Equal(3, sum);
         }
+
+        [Fact]
+        public void ProductTest()
+        {
+            // Arrange
+            int a = 2;
+            int b = 3;
+
+            // Act
+            int product = a * b;
+
+            // Assert
+            Assert.Equal(5, product);
+        }
     }
 }
