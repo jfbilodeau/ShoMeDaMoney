@@ -1,0 +1,29 @@
+name: Build and Test ShoMeDaMoney
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  jf-build-and-test:
+    # runs-on: ubuntu-latest
+    runs-on: self-hosted
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore ShoMeDaMoney.sln
+
+    - name: Build
+      run: dotnet build ShoMeDaMoney.sln --configuration Release --no-restore
+
+    - name: Test
+      run: dotnet test ShoMeDaMoney.sln --no-build --verbosity normal
