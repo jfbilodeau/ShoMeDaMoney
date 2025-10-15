@@ -29,7 +29,7 @@ namespace ShoMeDaMoney.Lib.Tests
             int product = a * b;
 
             // Assert
-            Assert.Equal(5, product);
+            Assert.Equal(6, product);
         }
     }
 }
