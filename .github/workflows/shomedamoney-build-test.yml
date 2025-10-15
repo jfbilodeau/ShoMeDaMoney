@@ -26,4 +26,4 @@ jobs:
       run: dotnet build ShoMeDaMoney.sln --configuration Release --no-restore
 
     - name: Test
-      run: dotnet test ShoMeDaMoney.sln --no-build --verbosity normal
+      run: dotnet test ShoMeDaMoney.sln --no-build --configuration Release --verbosity normal
