@@ -30,7 +30,7 @@ jobs:
       run: dotnet test ShoMeDaMoney.sln --no-build --configuration Release --verbosity normal
 
     - name: Publish
-      run: dotnet publish ShoMeDaMoney.sln --configuration Release --no-build --output ./out
+      run: dotnet publish ShoMeDaMoney --configuration Release --no-build --output ./out
 
     - name: Zip package
       run: |
@@ -56,4 +56,4 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: Deploy IaC
-      run: az deployment group create --resource-group shomedamoney --template-file iac/prod.bicep
+      run: az deployment group create --resource-group shomedamoney --template-file iac/prod.bicep --parameters webAppName=shomedamoneyprod
