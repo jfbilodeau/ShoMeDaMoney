@@ -57,3 +57,19 @@ jobs:
 
     - name: Deploy IaC
       run: az deployment group create --resource-group shomedamoney --template-file iac/prod.bicep --parameters webAppName=shomedamoneyprod
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: ShoMeDaMoneyPackage
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Deploy to Web App
+      run: az webapp deploy --name shomedamoneyprod --resource-group ShoMeDaMoney --type zip --src-path .\ShoMeDaMoney.zip
