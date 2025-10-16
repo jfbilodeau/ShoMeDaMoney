@@ -43,3 +43,6 @@ jobs:
       with:
         name: ShoMeDaMoneyPackage
         path: ShoMeDaMoney.zip
+
+    - name: Deploy IaC
+      run: az deployment group create --resource-group shomedamoney --template-file iac/prod.bicep
