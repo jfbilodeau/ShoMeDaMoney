@@ -44,5 +44,10 @@ jobs:
         name: ShoMeDaMoneyPackage
         path: ShoMeDaMoney.zip
 
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
     - name: Deploy IaC
       run: az deployment group create --resource-group shomedamoney --template-file iac/prod.bicep
