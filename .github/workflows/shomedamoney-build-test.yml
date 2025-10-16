@@ -75,4 +75,4 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: Deploy to Web App
-      run: az webapp deploy --name shomedamoneyprod --resource-group ShoMeDaMoney --type zip --src-path ShoMeDaMoney.zip
+      run: az webapp deploy --name shomedamoneyprod --resource-group ShoMeDaMoney --type zip --src-path ShoMeDaMoney.zip --slot v2-1
