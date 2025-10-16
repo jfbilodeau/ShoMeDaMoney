@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  jf-build-and-test:
+  build:
     runs-on: ubuntu-latest
     # runs-on: self-hosted
     steps:
@@ -28,3 +28,12 @@ jobs:
 
     - name: Test
       run: dotnet test ShoMeDaMoney.sln --no-build --configuration Release --verbosity normal
+
+    - name: Publish
+      run: dotnet publish ShoMeDaMoney.sln --configuration Release --no-build --output ./out
+
+    - name: Zip package
+      run: |
+        cd out
+        zip -r ../ShoMeDaMoney.zip .
+      shell: bash
